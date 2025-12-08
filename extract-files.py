@@ -51,6 +51,12 @@ blob_fixups: blob_fixups_user_type = {
 
     'vendor/lib64/hw/vendor.mediatek.hardware.pq@2.13-impl.so': blob_fixup()
         .replace_needed('libutils.so', 'libutils-v32.so'),
+
+    'vendor/bin/hw/vendor.mediatek.hardware.mtkpower@1.0-service': blob_fixup()
+        .replace_needed('android.hardware.power-V2-ndk_platform.so', 'android.hardware.power-V2-ndk.so'),
+
+    'vendor/etc/init/vendor.mediatek.hardware.mtkpower@1.0-service.rc': blob_fixup()
+        .regex_replace("audio", "audio input"),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

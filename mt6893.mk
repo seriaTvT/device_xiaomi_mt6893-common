@@ -204,18 +204,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml
 
 # Power
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
-    vendor.mediatek.hardware.mtkpower@1.2-service.stub
-
-PRODUCT_PACKAGES += \
-    libmtkperf_client \
-    libmtkperf_client_vendor
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/power,$(TARGET_COPY_OUT_VENDOR)/etc)
 
-$(call soong_config_set,power_libperfmgr,mode_extension_lib,//$(LOCAL_PATH):libperfmgr-ext-xiaomi)
+$(call soong_config_set,mediatek_power,powerhal_ext,//$(LOCAL_PATH):libperfmgr-ext-xiaomi)
 
 # Properties
 include $(LOCAL_PATH)/vendor_logtag.mk
@@ -251,9 +243,7 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/lineage/interfaces/power-libperfmgr \
     hardware/mediatek \
-    hardware/mediatek/libmtkperf_client \
     hardware/xiaomi
 
 # Shipping API level
