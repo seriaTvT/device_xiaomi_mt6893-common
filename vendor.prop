@@ -18,6 +18,8 @@ vendor.usbsph.ul.pcm.dump=0
 
 # Audio (Dolby)
 ro.vendor.audio.dolby.dax.support=true
+ro.vendor.dolby.dax.version=DAX3_3.8.5.20_r1
+persist.vendor.audio_fx.current=dolby
 
 # APK Verity
 ro.apk_verity.mode=2

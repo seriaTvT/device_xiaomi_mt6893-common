@@ -37,9 +37,6 @@ blob_fixups: blob_fixups_user_type = {
     ('vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-mtk-neuron', 'vendor/lib/libnvram.so', 'vendor/lib64/libnvram.so', 'vendor/lib64/libsysenv.so'): blob_fixup()
         .add_needed('libbase_shim.so'),
 
-    'vendor/etc/vintf/manifest/manifest_media_c2_V1_2_default.xml': blob_fixup()
-        .regex_replace('1.1', '1.2'),
-
     ('vendor/bin/hw/android.hardware.gnss-service.mediatek', 'vendor/lib64/hw/android.hardware.gnss-impl-mediatek.so'): blob_fixup()
         .replace_needed('android.hardware.gnss-V1-ndk_platform.so', 'android.hardware.gnss-V1-ndk.so'),
 
