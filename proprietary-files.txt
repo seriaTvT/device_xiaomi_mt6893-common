@@ -368,15 +368,20 @@ vendor/lib64/libvpu.so
 
 # Media (C2)
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b;SYMLINK=vendor/bin/hw/android.hardware.media.c2@1.2-mediatek
-vendor/etc/init/android.hardware.media.c2@1.2-mediatek.rc
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-extended-seccomp-policy
 vendor/etc/seccomp_policy/android.hardware.media.c2@1.2-mediatek-seccomp-policy
-vendor/lib64/libcodec2_mtk_c2store.so
-vendor/lib64/libcodec2_mtk_vdec.so
-vendor/lib64/libcodec2_mtk_venc.so
 vendor/lib64/libcodec2_vpp_qt_plugin.so
 vendor/lib64/libcodec2_vpp_rs_plugin.so
 vendor/lib64/libformatter.so
+
+
+# Media (C2) - from - lyriq
+vendor/lib64/libcodec2_mtk_c2store.so|4b5cbbcc2c77b529e32fccd0e11f8ae1dd5b7093
+
+# Media (C2) - from - agate
+vendor/etc/init/android.hardware.media.c2@1.2-mediatek.rc|e09ad9455fc75875f6ccef32572bfc0894c98ab5
+vendor/lib64/libcodec2_mtk_vdec.so|f673cb93ef300db88cd7040515e184e93028657f
+vendor/lib64/libcodec2_mtk_venc.so|ed970fcadfdbaf7bb0583ae6b38f79afacf1d103
 
 # Mlipay
 vendor/bin/mlipayd_isee@1.1
