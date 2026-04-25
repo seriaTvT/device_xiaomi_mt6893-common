@@ -69,7 +69,6 @@ PRODUCT_PACKAGES += \
     audio_policy.stub
 
 PRODUCT_PACKAGES += \
-    DolbyManager \
     MtkInCallService
 
 PRODUCT_COPY_FILES += \
