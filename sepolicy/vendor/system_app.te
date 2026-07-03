@@ -1,6 +1,5 @@
 hal_client_domain(system_app, hal_mlipay)
 
 # Xiaomi Parts
-rw_dir_file(system_app, sysfs_leds)
 rw_dir_file(system_app, sysfs_rgb_led)
 allow system_app vendor_gamekey_device:chr_file r_file_perms;
