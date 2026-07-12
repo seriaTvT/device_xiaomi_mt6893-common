@@ -1,0 +1,17 @@
+# Dedicated type for the zram writeback backing file. fs_mgr (init domain)
+# creates /data/per_boot/zram_swap per the fstab zram_backingdev_size option,
+# loop-attaches it and immediately unlinks it; the loop worker then does I/O
+# on the unlinked inode from the kernel domain. The parent dir is plain
+# system_data_file and domain.te neverallows kernel writes to that type, so
+# give the file its own type via a name-based transition - the sanctioned
+# pattern per the comment above that very neverallow.
+# core_data_file_type: sepolicy_test requires it for any type labeling a
+# path under /data/ outside /data/vendor.
+type zram_swap_file, file_type, data_file_type, core_data_file_type;
+
+type_transition init system_data_file:file zram_swap_file "zram_swap";
+allow init zram_swap_file:file create_file_perms;
+
+# No open/lock/watch: domain.te forbids kernel from opening files - the loop
+# worker only does I/O on the fd fs_mgr handed over.
+allow kernel zram_swap_file:file { read write getattr };
