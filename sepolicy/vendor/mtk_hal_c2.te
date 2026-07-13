@@ -1,1 +1,17 @@
 hal_client_domain(mtk_hal_c2, hal_mtk_mmagent)
+
+# postprocasyncs1 (a worker thread inside this HAL) reads sysfs_boot_mode;
+# denied on this port because mtk_hal_c2 never had the grant that sibling
+# MTK HAL domains (mediacodec, hal_audio_default) already carry in
+# device/mediatek/sepolicy_vndr. Same access, just extended to this domain.
+allow mtk_hal_c2 sysfs_boot_mode:file r_file_perms;
+
+# Note: this HAL also denies a `mtk_hal_c2 read custom_version_prop`
+# (mtk.avc.decoder probing ro.lineage.version on its crash-info path,
+# proven independent of the actual crash - see PORT-LOG.md 2026-07-13).
+# Left un-silenced: custom_version_prop is a private platform type
+# (device/lineage/sepolicy/common/private/property.te), not visible to
+# vendor-side .te source at all under Treble's public/private split - not
+# even `dontaudit` can reference it from here. checkpolicy: "unknown type
+# custom_version_prop". No known fix short of exporting the type publicly
+# platform-side, which is out of scope for a cosmetic tombstone-header line.
