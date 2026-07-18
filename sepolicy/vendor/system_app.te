@@ -3,3 +3,10 @@ hal_client_domain(system_app, hal_mlipay)
 # Xiaomi Parts
 rw_dir_file(system_app, sysfs_rgb_led)
 allow system_app vendor_gamekey_device:chr_file r_file_perms;
+
+# Traversal through /sys/class/leds (dir + color symlinks) so system_app can
+# reach the device-labeled RGB nodes above. No file perms on sysfs_leds here:
+# the A16 neverallow (coredomain sysfs_leds:file *) covers the file class only,
+# and actual reads/writes stay confined to sysfs_rgb_led.
+allow system_app sysfs_leds:dir search;
+allow system_app sysfs_leds:lnk_file read;
