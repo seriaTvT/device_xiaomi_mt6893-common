@@ -16,3 +16,6 @@ type vendor_gamekey_device, dev_type;
 
 # Lights
 type sysfs_rgb_led, fs_type, sysfs_type;
+
+# Haptics
+type sysfs_haptic, fs_type, sysfs_type;

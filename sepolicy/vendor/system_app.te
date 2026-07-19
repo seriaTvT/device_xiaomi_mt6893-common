@@ -3,6 +3,9 @@ hal_client_domain(system_app, hal_mlipay)
 # Xiaomi Parts
 rw_dir_file(system_app, sysfs_rgb_led)
 allow system_app vendor_gamekey_device:chr_file r_file_perms;
+# vmax = strength override; bst_vol is stat'd only, as the chip detector
+# (the attr exists on aw86927 but not aw8697).
+allow system_app sysfs_haptic:file rw_file_perms;
 
 # Traversal through /sys/class/leds (dir + color symlinks) so system_app can
 # reach the device-labeled RGB nodes above. No file perms on sysfs_leds here:
