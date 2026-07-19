@@ -1,0 +1,6 @@
+# AOSP core init.rc carries a legacy `chown system system
+# /sys/class/leds/{red,green,blue}/brightness` block that trips over our
+# sysfs_rgb_led label. Our vendor init.mt6893.rc already sets the same
+# ownership as vendor_init, so silence the redundant attempt instead of
+# granting init access to the label.
+dontaudit init sysfs_rgb_led:file setattr;
