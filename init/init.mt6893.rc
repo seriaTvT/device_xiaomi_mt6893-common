@@ -716,6 +716,8 @@ on boot
     # Haptic strength override (AresParts)
     chmod 0664 /sys/devices/platform/11d03000.i2c7/i2c-7/7-005a/vmax
     chown system system /sys/devices/platform/11d03000.i2c7/i2c-7/7-005a/vmax
+    chmod 0664 /sys/devices/platform/11d03000.i2c7/i2c-7/7-005a/gain_scale
+    chown system system /sys/devices/platform/11d03000.i2c7/i2c-7/7-005a/gain_scale
     # gauge symbolic
     symlink /sys/devices/platform/10026000.pwrap/10026000.pwrap:mt6359p/mt6359p-gauge /dev/gauge
     symlink /sys/devices/platform/1000d000.pwrap/1000d000.pwrap:main_pmic/mt6357-gauge /dev/gauge

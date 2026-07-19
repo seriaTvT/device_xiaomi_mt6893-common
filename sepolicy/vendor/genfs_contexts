@@ -25,6 +25,7 @@ genfscon sysfs /devices/platform/11f00000.i2c5/i2c-5/5-0034/mt6360_pmu_rgbled.4.
 # device dir -- 7-005a also holds the input/ subtree the input stack reads.
 genfscon sysfs /devices/platform/11d03000.i2c7/i2c-7/7-005a/vmax                                 u:object_r:sysfs_haptic:s0
 genfscon sysfs /devices/platform/11d03000.i2c7/i2c-7/7-005a/bst_vol                              u:object_r:sysfs_haptic:s0
+genfscon sysfs /devices/platform/11d03000.i2c7/i2c-7/7-005a/gain_scale                           u:object_r:sysfs_haptic:s0
 
 # Power
 genfscon sysfs /devices/platform/11015000.i2c0/i2c-0/0-0035/power_supply/Charger_Identify        u:object_r:sysfs_power_supply:s0
