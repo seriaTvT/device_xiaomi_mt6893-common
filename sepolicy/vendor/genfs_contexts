@@ -71,3 +71,7 @@ genfscon sysfs /devices/virtual/input/input3/wakeup                             
 
 # USB
 genfscon sysfs /devices/platform/rt-pd-manager/typec/port0                                       u:object_r:sysfs_usb_nonplat:s0
+
+# dma-buf pseudo-filesystem: label its superblock so fstatfs() on dma_buf fds is no longer
+# denied against "unlabeled" (fixes the per-frame getattr storm during media playback).
+genfscon dmabuf / u:object_r:dmabuf_fs:s0

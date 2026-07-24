@@ -1,0 +1,7 @@
+# Allow every domain to fstatfs() the dma-buf pseudo-filesystem. This is the DMA_BUF_MAGIC
+# validation the GPU userspace, gralloc and media players (Chrome CrGpuMain, ijkplayer, etc.)
+# run on each imported frame buffer. statfs on an anon pseudo-fs leaks nothing, and app.te's
+# "neverallow appdomain fs_type:filesystem ~getattr" confirms getattr is the sanctioned perm.
+# Granting the whole domain attribute avoids whack-a-mole across surfaceflinger/hal_graphics/
+# mediacodec/cameraserver, which take the same per-frame path.
+allow domain dmabuf_fs:filesystem getattr;
