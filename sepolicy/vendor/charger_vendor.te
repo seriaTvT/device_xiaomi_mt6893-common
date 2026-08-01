@@ -1,0 +1,7 @@
+# Off-mode charging (KPOC) runs the health HAL as charger_vendor, not
+# hal_health_default. AOSP's charger_type only grants sysfs_batteryinfo, but
+# genfs_contexts labels mt_charger's usb node sysfs_power_supply, and usb is
+# the only supply on this device that ever reports online=1 (ac stays 0).
+# Without this, BatteryMonitor can't read usb/{type,online}, ChargerIsOnline()
+# goes false, and the charger powers off ~10s later in a loop.
+r_dir_file(charger_vendor, sysfs_power_supply)
